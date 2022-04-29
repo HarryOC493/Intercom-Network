@@ -203,6 +203,31 @@
             border-radius: 25%;
             width: 100px;
         }
+        
+        .LockDownBtn {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: inline;
+            margin-left: 10%;
+            color: white;
+            background-color: red;
+        }
+
+        @keyframes glowing {
+            0% {
+            background-color: red;
+            }
+
+            100% {
+            background-color: white;
+            }
+        }
+
+        .LockDownBtn:hover {
+            animation: glowing 100ms infinite;
+
+        }
     </style>
     </head>
     <body>
@@ -215,7 +240,7 @@
         <!--<h2>Here you can send messages to any class you like, overwrite rain indicators, inicate a schoolwide lockdown and more(Comming Soon)</h2>-->
         </h1>
 
-        <span style="display: flex; justify-content: space-between;">
+        <span style="display: flex; justify-content: space-between; height: auto;">
             <div class="Container" style="width: 15%;">
                 <h1>My Profile</h1>
                 <img src="assets/images/MiniLogo.png" width="85%" height="auto" class="ProfilePng"><br><br>
@@ -227,7 +252,7 @@
             </div>
 
             <div class="ActionContainer">
-                <h1>Actions</h1>
+                <h1>Actions <form style="display: inline;"><input class='LockDownBtn' type='submitLckdn' value=" Lockdown" onclick="return confirm('Are you sure?')"></h1>
                 <hr class="solid">
                 <br>
                 
