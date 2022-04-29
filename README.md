@@ -6,7 +6,7 @@ The goal for this project, was to build a small box to place in each class room 
 This system utilises over 30 raspberry pi's acting as hosts and slaves.
 
 System overview
-  - One Pi acts as the host, running a LAMP web server and a mysql server. 
+  - One Pi acts as the host, running a LAMP web server and a mysql server.<br>
 		The web sever hosts the password protected admin page. 
 		On this page faculy can:
 		- Broadcast pre-recorded audio messages, 
