@@ -7,11 +7,10 @@ This system utilises over 30 raspberry pi's acting as hosts and slaves.
 
 System overview
   - One Pi acts as the host, running a LAMP web server and a mysql server.<br>
-		The web sever hosts the password protected admin page. 
-		On this page faculy can:
-		- Broadcast pre-recorded audio messages, 
-		- Enable/Disable a indicator light which informs students if they can go outside for break (Weather dependig) this light is automatically controlled by
-			an external pi with humidity sensor however this is a overwrite for it
+		The web sever hosts the password protected admin page. <br>
+		On this page faculy can:<br>
+		- Broadcast pre-recorded audio messages, <br>
+		- Enable/Disable a indicator light which informs students if they can go outside for break (Weather dependig) this light is automatically controlled by an external pi with humidity sensor however this is a overwrite for it<br>
 		- Initate a school lockdown, this plays a siren sound, and alerts all students to enter lowdown prodecure
 		
 
