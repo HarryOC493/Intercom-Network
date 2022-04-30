@@ -194,7 +194,8 @@
         }
 
         .checkbox {
-            accent-color: #bbb;
+            color: #bbb
+
         }
 
         .submit {
@@ -205,8 +206,8 @@
         }
         
         .LockDownBtn {
-            width: 65px;
-            height: 65px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: inline;
             margin-left: 10%;
@@ -220,13 +221,51 @@
             }
 
             100% {
-            background-color: white;
+            background-color: transparent;
             }
         }
 
-        .LockDownBtn:hover {
+        @keyframes glowing1 {
+            0% {
+            background-color: red;
+            }
+
+            100% {
+            background-color: orange;
+            }
+        }
+
+        .LockdownForm:hover .Button1 {
+            animation: glowing1 100ms infinite;
+        }
+        .LockdownForm:hover .LockdownLogin {
+            animation: glowing1 100ms infinite;
+        }
+
+
+
+
+
+        /*.LcokDownBtn:hover {
+            animation: glowing1 100ms infinite;
+
+        }*/
+
+        /*.LockdownForm:hover {
             animation: glowing 100ms infinite;
 
+        }*/
+
+        .LoginInfo {
+            width: 100px;
+            height: 25px;
+            border-radius: 10%;
+            background-color: #bbb;
+        }
+
+        .placeholder {
+            color: white; 
+            opacity: 1;
         }
     </style>
     </head>
@@ -243,7 +282,7 @@
         <span style="display: flex; justify-content: space-between; height: auto;">
             <div class="Container" style="width: 15%;">
                 <h1>My Profile</h1>
-                <img src="assets/images/MiniLogo.png" width="85%" height="auto" class="ProfilePng"><br><br>
+                <img src="./assets/images/MiniLogo.png" width="85%" height="auto" class="ProfilePng"><br><br>
                 <h3>- Username: @CETSS22</h3>
                 <h3>- Account Created: 25/APR/22</h3>
                 <h3>- Intercom Network Installed: 04/MAY/22</h3>
@@ -252,21 +291,21 @@
             </div>
 
             <div class="ActionContainer">
-                <h1>Actions <form style="display: inline;" onsubmit="return confirm('Are you sure')"><input class='LockDownBtn' type='submitLckdn' value=" Lockdown"></h1>
+                <h1>Actions <form class='LockdownForm'style="display: inline; vertical-align: right;" onsubmit="return confirm('Are you sure you want to initiate a lockown? N.b all sirens will turn on within 30 seconds')"><input class='LockdownBtn Button1' style='font-family: copperplate' type='submit' value="Lockdown "><div style="margin-left: 3%; display: inline-block; vertical-align: middle;"><input class='LockdownLogin' style="border-radius: 20%;" type='text' name='Username1'placeholder='Username'><br><input class="LockdownLogin" style='border-radius: 20%;' type='text' name='Password1' placeholder="Password"></div></h1>
                 <hr class="solid">
                 <br>
                 
                 <h5>Broadcast an audio message/Overwrite Rain Indicator:</h5>
                 <h6>N.b To broadcast and audio message you need to upload the message via mp3, a program should have been installed on your compter for this task, however if not use the following website: <a href='https://online-voice-recorder.com' target="_blank">Click Here!</a></h6>
-                <form action="/action_page.php" 
-                style="margin-left: 10%; 
+                <div style='margin-left: 10%; 
                     border-style: solid; 
                     border-width: 1px; 
                     border-color: #dddeca;
                     padding: 5px;
                     width: 85%;
                     background: #1d2636;
-                ">
+                    '>
+                <form action="/action_page.php"></form>
                     <label for="cars">Choose a time for your message to be played:</label>
 
                     <select name="Timestamp" id="Timestamp">
@@ -322,9 +361,10 @@
                     <br><br>
 
                     <label>Upload Message: <input type="file" id="AudioFile" accept='.mp3' name="AudioFile">(.mp3 only)</label><br><br>
-                    
+                    <input type='text' name="Username" placeholder="Username" class="LoginInfo"><br><br>
+                    <input type='text' name="Password" placeholder="Password" class="LoginInfo"><br><br>
                     <input class='submit' type="submit" value="Submit">
-                </form>
+                </form></div><br><br><br>
             </div>
 
             <div class="InfoContainer" style="width: 20%; float: right;">
@@ -333,7 +373,7 @@
                     <h3>Welcome To the CETSS Intercom Network Admin Panel!<br>Here you can:</h3>
                     <div style="margin-left: 8%; text-align: left; font-family: 'Copperplate';">
                         <ul>
-                            <li>Initate A Lockdown</li>
+                            <li>Initiate A Lockdown</li>
                             <li>Overwrite rain Indicators</li>
                             <li>Send audio messages to any class in the building!</li>
                         </ul>
