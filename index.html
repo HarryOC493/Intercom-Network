@@ -242,20 +242,6 @@
             animation: glowing1 100ms infinite;
         }
 
-
-
-
-
-        /*.LcokDownBtn:hover {
-            animation: glowing1 100ms infinite;
-
-        }*/
-
-        /*.LockdownForm:hover {
-            animation: glowing 100ms infinite;
-
-        }*/
-
         .LoginInfo {
             width: 100px;
             height: 25px;
@@ -282,7 +268,8 @@
         <span style="display: flex; justify-content: space-between; height: auto;">
             <div class="Container" style="width: 15%;">
                 <h1>My Profile</h1>
-                <img src="./assets/images/MiniLogo.png" width="85%" height="auto" class="ProfilePng"><br><br>
+		<img src="Assets/Images/MiniLogo.png" width="85%" height="auto"
+		class="ProfilePng"><br><br>
                 <h3>- Username: @CETSS22</h3>
                 <h3>- Account Created: 25/APR/22</h3>
                 <h3>- Intercom Network Installed: 04/MAY/22</h3>
@@ -291,7 +278,7 @@
             </div>
 
             <div class="ActionContainer">
-                <h1>Actions <form class='LockdownForm'style="display: inline; vertical-align: right;" onsubmit="return confirm('Are you sure you want to initiate a lockown? N.b all sirens will turn on within 30 seconds')"><input class='LockdownBtn Button1' style='font-family: copperplate' type='submit' value="Lockdown "><div style="margin-left: 3%; display: inline-block; vertical-align: middle;"><input class='LockdownLogin' style="border-radius: 20%;" type='text' name='Username1'placeholder='Username'><br><input class="LockdownLogin" style='border-radius: 20%;' type='text' name='Password1' placeholder="Password"></div></h1>
+                <h1>Actions <form action='Lockdown.php'class='LockdownForm'style="display: inline; vertical-align: right;"><input class='LockdownBtn Button1' style='font-family: copperplate' type='submit' value="Lockdown "><div style="margin-left: 3%; display: inline-block; vertical-align: middle;"><input class='LockdownLogin' style="border-radius: 20%;" type='text' name='Username1'placeholder='Username'><br><input class="LockdownLogin" style='border-radius: 20%;' type='text' name='Password1' placeholder="Password"></div></h1>
                 <hr class="solid">
                 <br>
                 
