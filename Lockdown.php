@@ -1,9 +1,4 @@
-<html>
-    <Head>
-        <title>Intercom Admin</title>
-    </Head>
-
-    <?php
+<?php
 
     $Username = $_POST['Username1'];
     $Password = $_POST['Password1'];
@@ -35,7 +30,11 @@
 
     //$conn->close();
 
-    ?>
+    echo "
+    <html>
+    <Head>
+        <title>Intercom Admin</title>
+    </Head>
     <style>
         body {
             background-color: #293345;
@@ -181,7 +180,7 @@
 
         .slider:before {
             position: absolute;
-            content: "";
+            content: '';
             height:18px;
             width: 18px;
             left: 4px;
@@ -291,8 +290,8 @@
     </head>
     <body>
         
-        <ul class="NavUl">
-          <li class="NavLi"><p>CETSS Intercom System</p></li>
+        <ul class='NavUl'>
+          <li class='NavLi'><p>CETSS Intercom System</p></li>
         </ul>
 
         <h1>Welcome To: <?php echo $Username; ?></h1>
@@ -300,8 +299,8 @@
         </h1>
         
     </body>
-    <div id="container1">
+    <div id='container1'>
         <footer><p><br>Website By Harry O'Connor<br><br>Intercom Network by: Harry O'Connor | Cael Cheers | Jack Dennehy<br><br></p></footer>
     </div>
-    <div id="below"></div>
-</html>
+    <div id='below'></div>
+    </html>"
