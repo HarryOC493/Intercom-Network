@@ -294,7 +294,7 @@
           <li class='NavLi'><p>CETSS Intercom System</p></li>
         </ul>
 
-        <h1>Welcome To: <?php echo $Username; ?></h1>
+        <h1>Welcome To: " . $Username . "</h1>
         <!--<h2>Here you can send messages to any class you like, overwrite rain indicators, inicate a schoolwide lockdown and more(Comming Soon)</h2>-->
         </h1>
         
@@ -304,3 +304,5 @@
     </div>
     <div id='below'></div>
     </html>"
+
+    ?>
