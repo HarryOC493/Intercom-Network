@@ -2,7 +2,8 @@
 
     $Username = $_POST['Username1'];
     $Password = $_POST['Password1'];
-    $isTest = $_POST['test'];
+    $TestCheck = $_POST['test'];
+    $isTest = 1;
 
     $Servername = 'some-mysql';
     $SqlUsername = 'root';
@@ -18,12 +19,19 @@
     die("Please contact your Admin: Connection failed: " . $conn->connect_error);
     }
 
+    if ($TestCheck =='on') {
+        //Do Nothing for now
+    } else {
+        $isTest = 0;
+    }
+
     $sql = "INSERT INTO Lockdowns (Tmestamp, Lockdown, Test) VALUES (1538, 0," . $isTest . ")";
 
     if ($conn->query($sql) === TRUE) {
         //Do nothing
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
+        echo $sql;
     }
 
     $conn->close();
