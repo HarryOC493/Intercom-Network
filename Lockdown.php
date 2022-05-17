@@ -13,9 +13,19 @@
 
     // Check connection
     if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    } 
-    echo "Connected successfully";
+    die("Please contact your Admin: Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "INSERT INTO Lockdowns (Tmestamp, Lockdown, Test) VALUES (15:38, 0, 1)";
+
+    if ($conn->query($sql) === TRUE) {
+        //Do nothing
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $conn->close();
+
 
 ?>
 
@@ -282,7 +292,7 @@
           <li class='NavLi'><p>CETSS Intercom System</p></li>
         </ul>
 
-        <h1><?php echo '"Welcome To: " . $Username . "'?></h1>
+        <h1><?php echo "Welcome To: " . $Username?></h1>
         <!--<h2>Here you can send messages to any class you like, overwrite rain indicators, inicate a schoolwide lockdown and more(Comming Soon)</h2>-->
         </h1>
         
