@@ -9,14 +9,14 @@
     $DbName = 'CETSS';
 
     // Create connection
-    $conn = new mysqli($Servername, $SqlUsername, $SqlPassword);
+    $conn = new mysqli($Servername, $SqlUsername, $SqlPasswor, $DbName);
 
     // Check connection
     if ($conn->connect_error) {
     die("Please contact your Admin: Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO Lockdowns (Tmestamp, Lockdown, Test) VALUES (15:38, 0, 1)";
+    $sql = "INSERT INTO Lockdowns (Tmestamp, Lockdown, Test) VALUES (1538, 0, 1)";
 
     if ($conn->query($sql) === TRUE) {
         //Do nothing
