@@ -329,7 +329,7 @@
         </ul>
 
         <?php if ($VerifyCreds == 'False') {
-            echo '<h1>Incorrect Username or Password</h1><br>'
+            echo '<h1>Incorrect Username or Password</h1><br>';
         } else {
             echo '<h1><?php echo "Welcome " . $Username?></h1><br>
             <h1><?php echo "Lockdown has been: " . $LockdownStatus?></h1><br>
