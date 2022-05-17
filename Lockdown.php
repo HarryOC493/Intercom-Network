@@ -37,7 +37,7 @@
             $LockdownStatus = 'Stopped';
         }
 
-        $sql = "INSERT INTO Lockdowns (Tmestamp, Lockdown, Test) VALUES (na, " . $Lockdown . ", " . $isTest . ")";
+        $sql = "INSERT INTO Lockdowns (Tmestamp, Lockdown, Test) VALUES ('na', " . $Lockdown . ", " . $isTest . ")";
 
         if ($conn->query($sql) === TRUE) {
             //Do nothing if query runs fine
