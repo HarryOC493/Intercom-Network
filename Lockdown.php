@@ -2,21 +2,23 @@
 
     $Username = $_POST['Username1'];
     $Password = $_POST['Password1'];
+    $isTest = $_POST['test'];
 
     $Servername = 'some-mysql';
     $SqlUsername = 'root';
     $SqlPassword = 'dev22';
     $DbName = 'CETSS';
+    
 
     // Create connection
-    $conn = new mysqli($Servername, $SqlUsername, $SqlPasswor, $DbName);
+    $conn = new mysqli($Servername, $SqlUsername, $SqlPassword, $DbName);
 
     // Check connection
     if ($conn->connect_error) {
     die("Please contact your Admin: Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO Lockdowns (Tmestamp, Lockdown, Test) VALUES (1538, 0, 1)";
+    $sql = "INSERT INTO Lockdowns (Tmestamp, Lockdown, Test) VALUES (1538, 0," . $isTest . ")";
 
     if ($conn->query($sql) === TRUE) {
         //Do nothing
