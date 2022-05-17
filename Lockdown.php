@@ -332,7 +332,7 @@
         <?php } else { ?>
             <h1><?php echo "Welcome " . $Username?></h1><br>
             <h1><?php echo "Lockdown has been: " . $LockdownStatus?></h1><br>
-            <h1><?php echo "Test status: " . $TestStatus?><br>
+            <h1><?php echo "Test status: " . $TestStatus?><br><br><br>
             <a href="index.html" class="button">Go Home</a>
             <!--<h2>Here you can send messages to any class you like, overwrite rain indicators, inicate a schoolwide lockdown and more(Comming Soon)</h2>-->
             </h1>';
