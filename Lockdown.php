@@ -12,35 +12,38 @@
     $SqlPassword = 'dev22';
     $DbName = 'CETSS';
     
+    if ($Username == 'CetssAdmin' and $Password == 'Lyra22') {
+        // Create connection
+        $conn = new mysqli($Servername, $SqlUsername, $SqlPassword, $DbName);
 
-    // Create connection
-    $conn = new mysqli($Servername, $SqlUsername, $SqlPassword, $DbName);
+        // Check connection
+        if ($conn->connect_error) {
+        die("Please contact your Admin: Connection failed: " . $conn->connect_error);
+        }
 
-    // Check connection
-    if ($conn->connect_error) {
-    die("Please contact your Admin: Connection failed: " . $conn->connect_error);
+        if ($TestCheck =='on') {
+            //Do Nothing for now
+        } else {
+            $isTest = 0;
+        }
+
+        if ($StopCheck =='on') {
+            $Lockdown = 0;
+        }
+
+        $sql = "INSERT INTO Lockdowns (Tmestamp, Lockdown, Test) VALUES (1538, " . $Lockdown . ", " . $isTest . ")";
+
+        if ($conn->query($sql) === TRUE) {
+            //Do nothing
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo $sql;
+        }
+
+        $conn->close();
+    } else{
+        die("Incorrect Username or Password")
     }
-
-    if ($TestCheck =='on') {
-        //Do Nothing for now
-    } else {
-        $isTest = 0;
-    }
-
-    if ($StopCheck =='on') {
-        $Lockdown = 0;
-    }
-
-    $sql = "INSERT INTO Lockdowns (Tmestamp, Lockdown, Test) VALUES (1538, " . $Lockdown . ", " . $isTest . ")";
-
-    if ($conn->query($sql) === TRUE) {
-        //Do nothing
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-        echo $sql;
-    }
-
-    $conn->close();
 
 
 ?>
