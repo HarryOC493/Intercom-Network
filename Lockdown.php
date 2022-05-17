@@ -3,7 +3,9 @@
     $Username = $_POST['Username1'];
     $Password = $_POST['Password1'];
     $TestCheck = $_POST['test'];
+    $StopCheck = $_POST['stop'];
     $isTest = 1;
+    $Lockdown = 1;
 
     $Servername = 'some-mysql';
     $SqlUsername = 'root';
@@ -25,7 +27,11 @@
         $isTest = 0;
     }
 
-    $sql = "INSERT INTO Lockdowns (Tmestamp, Lockdown, Test) VALUES (1538, 0," . $isTest . ")";
+    if ($StopCheck =='on') {
+        $Lockdown = 0;
+    }
+
+    $sql = "INSERT INTO Lockdowns (Tmestamp, Lockdown, Test) VALUES (1538, " . $Lockdown . ", " . $isTest . ")";
 
     if ($conn->query($sql) === TRUE) {
         //Do nothing
