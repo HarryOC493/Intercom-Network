@@ -6,6 +6,8 @@
     $StopCheck = isset($_POST['stop']);
     $isTest = 1;
     $Lockdown = 1;
+    $LockdownStatus = 'Initiated';
+    $TestStatus = 'On';
 
     $Servername = 'some-mysql';
     $SqlUsername = 'root';
@@ -13,33 +15,36 @@
     $DbName = 'CETSS';
     
     if ($Username == 'CetssAdmin' and $Password == 'Lyra22') {
-        // Create connection
+        // Define connection
         $conn = new mysqli($Servername, $SqlUsername, $SqlPassword, $DbName);
 
-        // Check connection
+        // Check connection status
         if ($conn->connect_error) {
         die("Please contact your Admin: Connection failed: " . $conn->connect_error);
         }
 
-        if ($TestCheck =='on') {
-            //Do Nothing for now
-        } else {
+        if ($TestCheck !='on') {
+            //If Test checkbox is not ticked, set Test column data to '0'
             $isTest = 0;
+            $TestStatus = 'Off';
         }
 
         if ($StopCheck =='on') {
+            //If Stop checkbox is ticked, set Lockdown column to '0'
             $Lockdown = 0;
+            $LockdownStatus = 'Stopped';
         }
 
         $sql = "INSERT INTO Lockdowns (Tmestamp, Lockdown, Test) VALUES (na, " . $Lockdown . ", " . $isTest . ")";
 
         if ($conn->query($sql) === TRUE) {
-            //Do nothing
+            //Do nothing if query runs fine
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
             echo $sql;
         }
 
+        //Close connection to mysql server
         $conn->close();
     } else {
         die("Incorrect Username or Password");
@@ -303,6 +308,18 @@
             color: white; 
             opacity: 1;
         }
+        .button {
+            background-color: #46d141;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
     </style>
     </head>
     <body>
@@ -311,7 +328,10 @@
           <li class='NavLi'><p>CETSS Intercom System</p></li>
         </ul>
 
-        <h1><?php echo "Welcome To: " . $Username?></h1>
+        <h1><?php echo "Welcome " . $Username?></h1><br>
+        <h1><?php echo "Lockdown has been: " . $LockdownStatus?></h1><br>
+        <h1><?php echo "Test status: " . $TestStatus?></h1><br>
+        <a href="index.html" class="button">Go Home</a>
         <!--<h2>Here you can send messages to any class you like, overwrite rain indicators, inicate a schoolwide lockdown and more(Comming Soon)</h2>-->
         </h1>
         
