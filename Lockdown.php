@@ -337,7 +337,7 @@
             <a href="index.html" class="button">Go Home</a>
             <!--<h2>Here you can send messages to any class you like, overwrite rain indicators, inicate a schoolwide lockdown and more(Comming Soon)</h2>-->
             </h1>';
-        }
+        } ?>
         
     </body>
     <div id='container1'>
