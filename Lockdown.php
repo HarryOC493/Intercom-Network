@@ -2,8 +2,8 @@
 
     $Username = $_POST['Username1'];
     $Password = $_POST['Password1'];
-    $TestCheck = $_POST['test'];
-    $StopCheck = $_POST['stop'];
+    $TestCheck = isset($_POST['test']);
+    $StopCheck = isset($_POST['stop']);
     $isTest = 1;
     $Lockdown = 1;
 
