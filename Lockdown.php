@@ -31,7 +31,7 @@
             $Lockdown = 0;
         }
 
-        $sql = "INSERT INTO Lockdowns (Tmestamp, Lockdown, Test) VALUES (1538, " . $Lockdown . ", " . $isTest . ")";
+        $sql = "INSERT INTO Lockdowns (Tmestamp, Lockdown, Test) VALUES (na, " . $Lockdown . ", " . $isTest . ")";
 
         if ($conn->query($sql) === TRUE) {
             //Do nothing
@@ -41,8 +41,8 @@
         }
 
         $conn->close();
-    } else{
-        die("Incorrect Username or Password")
+    } else {
+        die("Incorrect Username or Password");
     }
 
 
