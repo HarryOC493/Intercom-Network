@@ -9,7 +9,7 @@
     $DbName = 'CETSS';
 
     // Create connection
-    $conn = new mysqli($Servername, $Username, $Password);
+    $conn = new mysqli($Servername, $SqlUsername, $SqlPassword);
 
     // Check connection
     if ($conn->connect_error) {
