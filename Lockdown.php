@@ -3,34 +3,22 @@
     $Username = $_POST['Username1'];
     $Password = $_POST['Password1'];
 
-    $Servername = 'localhost';
-    $SqlUsername = 'Admin';
-    $SqlPassword = 'Champ.007';
-    $DbName = 'Database';
+    $Servername = 'some-mysql';
+    $SqlUsername = 'root';
+    $SqlPassword = 'dev22';
+    $DbName = 'CETSS';
 
-    //$conn = new mysqli($Servername, $SqlUsername, $SqlPassword, $DbName);
+    // Create connection
+    $conn = new mysqli($Servername, $Username, $Password);
 
-    //if ($conn->connect_error) {
-        //die("connecteion Failed: " . $conn->connect_error);
-    //}
+    // Check connection
+    if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+    } 
+    echo "Connected successfully";
 
+?>
 
-    //$Sql = "INSERT INTO Lockdowns (TimStamp, Lockdown, Test') VALUES ($nearest_min, '1', '0')";
-
-    //if ($Username == 'CETSS2022') {
-        //if ($Password == 'Champ.007') {
-            //if ($conn->query($sql) === TRUE) {
-                //echo 'New Record Created Sucessfully';
-            //} else {
-                //echo 'Error: ' . $Sql . "<br>" . $conn->error;
-            //}
-       //}
-
-    //}
-
-    //$conn->close();
-
-    echo "
     <html>
     <Head>
         <title>Intercom Admin</title>
@@ -294,7 +282,7 @@
           <li class='NavLi'><p>CETSS Intercom System</p></li>
         </ul>
 
-        <h1>Welcome To: " . $Username . "</h1>
+        <h1><?php echo '"Welcome To: " . $Username . "'?></h1>
         <!--<h2>Here you can send messages to any class you like, overwrite rain indicators, inicate a schoolwide lockdown and more(Comming Soon)</h2>-->
         </h1>
         
