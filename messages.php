@@ -1,4 +1,89 @@
-<html>
+<?php
+    // Global Variables
+    $VerifyCreds = 'False';
+    $Servername = 'some-mysql'; //Docker Container Name not error
+    $SqlUsername = 'root';
+    $SqlPassword = 'dev22';
+    $DbName = 'CETSS';
+
+    // ---------------- Form Data --------------------------
+    $Username = $_POST['Username'];
+    $Password = $_POST['Password'];
+    $MessageTimee = $_POST['Timestamp'];
+    $Rain = $_POST['rain'];
+    $SendMessage = $_POST['SendMessage'];
+    
+    $Room1 = isset($_POST['1']);
+    $Room2 = isset($_POST['2']);
+    $Room3 = isset($_POST['3']);
+    $Room4 = isset($_POST['4']);
+    $Room5 = isset($_POST['5']);
+    $Room6 = isset($_POST['6']);
+    $Room7 = isset($_POST['7']);
+    $Room8 = isset($_POST['8']);
+    $Room9 = isset($_POST['9']);
+    $Room10 = isset($_POST['10']);
+    $Room11 = isset($_POST['11']);
+    $Room12 = isset($_POST['12']);
+    $Room13 = isset($_POST['13']);
+    $Room14 = isset($_POST['14']);
+    $Room15 = isset($_POST['15']);
+    $Room16 = isset($_POST['16']);
+    $Room17 = isset($_POST['17']);
+    $Room18 = isset($_POST['18']);
+    $Room19 = isset($_POST['19']);
+    $Room20 = isset($_POST['20']);
+    $Room21 = isset($_POST['21']);
+    $Room22 = isset($_POST['22']);
+    $Room23 = isset($_POST['23']);
+    $Room24 = isset($_POST['24']);
+
+    // ---------------- Form Data End--------------------------
+
+    // ---------------- File Upload ---------------------------
+    $target_dir = 'Messages/';
+    $UploadOk = False;
+    $CurTime = date("YmdHis");
+    $newFilename = '/var/www/html/Messages/' . $CurTime . '.mp3';
+    move_uploaded_file($_FILES['AudioFile']['tmp_name'], $newFilename);
+
+    
+    //Verify Login Creds
+    if ($Username == 'CetssAdmin' and $Password == 'Lyra22') {
+        $VerifyCreds = 'True';
+
+        // Define SQL connection and test
+        $conn = new mysqli($Servername, $SqlUsername, $SqlPassword, $DbName);
+        if ($conn->connect_error) { die("Please contact your Admin: Connection failed: " . $conn->connect_error); }
+
+        //Creds are correct, continue with script:
+        if (move_uploaded_file($_FILES['AudioFile']['tmp_name'], $newFilename)) {
+            //File Uploaded Correctly, Insert Sql Record
+            $UploadOk = True;
+
+            
+            if ($UploadOk == True) {
+                $sql = 'INSERT INTO Messages (TmeStamp, Message, Rain, MsgName, Room1, Room2, Room3. Room4, Room5) VALUES ("' . $MessageTimee . '","' . $SendMessage . '","' . $Rain . '","' . $newFilename . '","' . $Room1 . '","' . $Room2 . '","' . $Room3 . '","' . $Room4 . '","' . $Room5 . '")';
+                if ($conn->query($sql) === TRUE) {
+                    // Record Inserted Correctly, Do nothing
+                } else  {
+                    "Error: " . $sql . "<br>" . $conn_>error;
+                }
+            }
+
+
+        } else {
+            $UploadOk = False;
+            die('File Upload error, contact your admin' . $newFilename);
+        }
+        //Close connection to mysql server
+        $conn->close();
+    }
+
+
+?>
+
+    <html>
     <Head>
         <title>Intercom Admin</title>
     </Head>
@@ -147,7 +232,7 @@
 
         .slider:before {
             position: absolute;
-            content: "";
+            content: '';
             height:18px;
             width: 18px;
             left: 4px;
@@ -253,129 +338,41 @@
             color: white; 
             opacity: 1;
         }
+        .button {
+            background-color: #46d141;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
     </head>
     <body>
         
-        <ul class="NavUl">
-          <li class="NavLi"><p>CETSS Intercom System</p></li>
+        <ul class='NavUl'>
+          <li class='NavLi'><p>CETSS Intercom System</p></li>
         </ul>
 
-        <h1>Welcome To The CETSS Intercom Network Admin Panel</h1>
-        <!--<h2>Here you can send messages to any class you like, overwrite rain indicators, inicate a schoolwide lockdown and more(Comming Soon)</h2>-->
-        </h1>
-
-        <span style="display: flex; justify-content: space-between; height: auto;">
-            <div class="Container" style="width: 15%;">
-                <h1>My Profile</h1>
-		<img src="Assets/Images/MiniLogo.png" width="85%" height="auto"
-		class="ProfilePng"><br><br>
-                <h3>- Username: @CETSS22</h3>
-                <h3>- Account Created: 25/APR/22</h3>
-                <h3>- Intercom Network Installed: 04/MAY/22</h3>
-                <br><br>
-
-            </div>
-
-            <div class="ActionContainer">
-                <h1>Actions <form method='post' action='Lockdown.php'class='LockdownForm' style="display: inline; vertical-align: right;"><input class='LockdownBtn Button1' style='font-family: copperplate' type='submit' value="Lockdown "><div style="margin-left: 3%; display: inline-block; vertical-align: middle;"><input class='LockdownLogin' style="border-radius: 20%;" type='text' name='Username1'placeholder='Username'><br><input class="LockdownLogin" style='border-radius: 20%;' type='text' name='Password1' placeholder="Password"><br><input type="checkbox" id="checkbox" name="stop"><label style="font-size: 10px;" for="stop">Stop Lockdown?</label><br><input type="checkbox" id="checkbox" name="test"><label style="font-size: 10px;" for="test">Test?</label></div></form></h1>
-                <hr class="solid">
-                <br>
-                
-                <h5>Broadcast an audio message/Overwrite Rain Indicator:</h5>
-                <h6>N.b To broadcast and audio message you need to upload the message via mp3, a program should have been installed on your compter for this task, however if not use the following website: <a href='https://online-voice-recorder.com' target="_blank">Click Here!</a></h6>
-                <div style='margin-left: 10%; 
-                    border-style: solid; 
-                    border-width: 1px; 
-                    border-color: #dddeca;
-                    padding: 5px;
-                    width: 85%;
-                    background: #1d2636;
-                    '>
-                <form action="messages.php" method="POST" enctype="multipart/form-data">
-                    <label for="Timestamp">Choose a time for your message to be played:</label>
-
-                    <select name="Timestamp" id="Timestamp">
-                        <option value="8:40">8:40</option>
-                        <option value="9:40">9:40</option>
-                        <option value="10:55">10:55</option>
-                        <option value="11:55">11:55</option>
-                        <option value="14:25">14:25</option>
-                        <option value="15:25">15:25</option>
-                    </select><br><br>
-
-                    <label style="font-size: 15px;;">Overwrite Rain Indicator:  </label>
-                    <label class="switch">
-                        <input type="checkbox" name="rain" id="rain">
-                        <span class="slider">
-                    </label><br><br>
-
-                    <label style="font-size: 15px;;">Do you wish to send an audio message?:  </label>
-                    <label class="switch">
-                        <input type="checkbox" name="SendMessage" id="SendMessage">
-                        <span class="slider">
-                    </label><br><br>
-
-                    <label>If you are sending an audio message fill our the following, otherwise submit the form:</label><br>
-                    <input type="checkbox" id="checkbox" name="1"><label for="1">Room 1</label>
-                    <input type="checkbox" id="checkbox" name="2"><label for="2">Room 2</label>
-                    <input type="checkbox" id="checkbox" name="3"><label for="3">Room 3</label>
-                    <input type="checkbox" id="checkbox" name="4"><label for="4">Room 4</label>
-                    <input type="checkbox" id="checkbox" name="5"><label for="5">Room 5</label>
-                    <input type="checkbox" id="checkbox" name="6"><label for="6">Room 6</label>
-                    <br><br>
-                    <input type="checkbox" id="checkbox" name="7"><label for="7">Room 7</label>
-                    <input type="checkbox" id="checkbox" name="8"><label for="8">Room 8</label>
-                    <input type="checkbox" id="checkbox" name="9"><label for="9">Room 9</label>
-                    <input type="checkbox" id="checkbox" name="10"><label for="10">Room 10</label>
-                    <input type="checkbox" id="checkbox" name="11"><label for="11">Room 11</label>
-                    <input type="checkbox" id="checkbox" name="12"><label for="12">Room 12</label>
-                    <br><br>
-                    <input type="checkbox" id="checkbox" name="13"><label for="13">Room 13</label>
-                    <input type="checkbox" id="checkbox" name="14"><label for="14">Room 14</label>
-                    <input type="checkbox" id="checkbox" name="15"><label for="15">Room 15</label>
-                    <input type="checkbox" id="checkbox" name="16"><label for="16">Room 16</label>
-                    <input type="checkbox" id="checkbox" name="17"><label for="17">Room 17</label>
-                    <input type="checkbox" id="checkbox" name="18"><label for="18">Room 18</label>
-                    <br><br>
-                    <input type="checkbox" id="checkbox" name="19"><label for="19">Room 19</label>
-                    <input type="checkbox" id="checkbox" name="20"><label for="20">Room 20</label>
-                    <input type="checkbox" id="checkbox" name="21"><label for="21">Room 21</label>
-                    <input type="checkbox" id="checkbox" name="22"><label for="22">Room 22</label>
-                    <input type="checkbox" id="checkbox" name="23"><label for="23">Room 23</label>
-                    <input type="checkbox" id="checkbox" name="24"><label for="24">Room 24</label>
-
-                    <br><br>
-
-                    <label>Upload Message: <input type="file" id="AudioFile" accept='.mp3' name="AudioFile">(.mp3 only)</label><br><br>
-                    <input type='text' name="Username" placeholder="Username" class="LoginInfo"><br><br>
-                    <input type='text' name="Password" placeholder="Password" class="LoginInfo"><br><br>
-                    <input class='submit' type="submit" value="Submit">
-                </form></div><br><br><br>
-            </div>
-
-            <div class="InfoContainer" style="width: 20%; float: right;">
-                <h1>Information</h1>
-                <div>
-                    <h3>Welcome To the CETSS Intercom Network Admin Panel!<br>Here you can:</h3>
-                    <div style="margin-left: 8%; text-align: left; font-family: 'Copperplate';">
-                        <ul>
-                            <li>Initiate A Lockdown</li>
-                            <li>Overwrite rain Indicators</li>
-                            <li>Send audio messages to any class in the building!</li>
-                        </ul>
-                    </div>
-                </div>
-                <h1>Help</h1>
-                <div>
-                    <h3>If you encounter any issues, or need help with anything at all. Please email harryoconnor007@gmail.com or harryoconnor10@icloud.com. Irrelevant if I am still a student!</h3>
-                </div>
-            </div>
-        </span>
+        <?php if ($VerifyCreds == 'False') { ?>
+            <h1>Incorrect Username or Password</h1><br>';
+        <?php } else { ?>
+            <h1><?php echo "Welcome " . $Username?></h1><br>
+            <h1><?php echo "Lockdown has been: " . $LockdownStatus?></h1><br>
+            <h1><?php echo "Test status: " . $TestStatus?><br><br><br>
+            <a href="index.html" class="button">Go Home</a>
+            <!--<h2>Here you can send messages to any class you like, overwrite rain indicators, inicate a schoolwide lockdown and more(Comming Soon)</h2>-->
+            </h1>';
+        <?php } ?>
         
     </body>
-    <div id="container1">
+    <div id='container1'>
         <footer><p><br>Website By Harry O'Connor<br><br>Intercom Network by: Harry O'Connor | Cael Cheers | Jack Dennehy<br><br></p></footer>
     </div>
-    <div id="below"></div>
-</html>
+    <div id='below'></div>
+    </html>"
+
+    ?>
