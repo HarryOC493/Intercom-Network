@@ -292,8 +292,8 @@
                     width: 85%;
                     background: #1d2636;
                     '>
-                <form action="/messages.php"></form>
-                    <label for="cars">Choose a time for your message to be played:</label>
+                <form action="messages.php"></form>
+                    <label for="Timestamp">Choose a time for your message to be played:</label>
 
                     <select name="Timestamp" id="Timestamp">
                         <option value="8:40">8:40</option>
@@ -306,13 +306,13 @@
 
                     <label style="font-size: 15px;;">Overwrite Rain Indicator:  </label>
                     <label class="switch">
-                        <input type="checkbox">
+                        <input type="checkbox" name="rain" id="rain">
                         <span class="slider">
                     </label><br><br>
 
                     <label style="font-size: 15px;;">Do you wish to send an audio message?:  </label>
                     <label class="switch">
-                        <input type="checkbox">
+                        <input type="checkbox" name="SendMessage" id="SendMessage">
                         <span class="slider">
                     </label><br><br>
 
