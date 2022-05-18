@@ -57,7 +57,8 @@
 
         //Creds are correct, continue with script:
         move_uploaded_file($_FILES['AudioFile']['tmp_name'], $newFilename);
-        $TimeInterval = date(Ymd) . $MessageTimee;
+        $Today = date(Ymd);
+        $TimeInterval = $Today . $MessageTimee;
         $sql = 'INSERT INTO Messages (TmeStamp, Message, Rain, MsgName, Room1, Room2, Room3, Room4, Room5) VALUES ("' . $TimeInterval . '","' . $SendMessage . '","' . $Rain . '","' . $newFilename . '","' . $Room1 . '","' . $Room2 . '","' . $Room3 . '","' . $Room4 . '","' . $Room5 . '")';
         if ($conn->query($sql) === TRUE) {
             // Record Inserted Correctly, Do nothing
