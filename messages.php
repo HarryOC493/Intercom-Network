@@ -51,14 +51,14 @@
     //Verify Login Creds
     if ($Username == 'CetssAdmin' and $Password == 'Lyra22') {
         $VerifyCreds = 'True';
-
         // Define SQL connection and test
         $conn = new mysqli($Servername, $SqlUsername, $SqlPassword, $DbName);
         if ($conn->connect_error) { die("Please contact your Admin: Connection failed: " . $conn->connect_error); }
 
         //Creds are correct, continue with script:
         move_uploaded_file($_FILES['AudioFile']['tmp_name'], $newFilename);
-        $sql = 'INSERT INTO Messages (TmeStamp, Message, Rain, MsgName, Room1, Room2, Room3, Room4, Room5) VALUES ("' . $MessageTimee . '","' . $SendMessage . '","' . $Rain . '","' . $newFilename . '","' . $Room1 . '","' . $Room2 . '","' . $Room3 . '","' . $Room4 . '","' . $Room5 . '")';
+        $TimeInterval = date(Ymd) . $MessageTimee;
+        $sql = 'INSERT INTO Messages (TmeStamp, Message, Rain, MsgName, Room1, Room2, Room3, Room4, Room5) VALUES ("' . $TimeInterval . '","' . $SendMessage . '","' . $Rain . '","' . $newFilename . '","' . $Room1 . '","' . $Room2 . '","' . $Room3 . '","' . $Room4 . '","' . $Room5 . '")';
         if ($conn->query($sql) === TRUE) {
             // Record Inserted Correctly, Do nothing
         } else {
