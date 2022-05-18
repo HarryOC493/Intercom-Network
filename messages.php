@@ -44,7 +44,7 @@
     $target_dir = 'Messages/';
     $UploadOk = False;
     $CurTime = date("YmdHis");
-    $newFilename = '/var/www/html/Messages/' . $CurTime . '.mp3';
+    $newFilename = '/var/www/html/' . $CurTime . '.mp3';
     move_uploaded_file($_FILES['AudioFile']['tmp_name'], $newFilename);
 
     
