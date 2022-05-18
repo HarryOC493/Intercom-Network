@@ -10,8 +10,8 @@
     $Username = $_POST['Username'];
     $Password = $_POST['Password'];
     $MessageTimee = $_POST['Timestamp'];
-    $Rain = $_POST['rain'];
-    $SendMessage = $_POST['SendMessage'];
+    $Rain = isset($_POST['rain']);
+    $SendMessage = isset($_POST['SendMessage']);
     
     $Room1 = isset($_POST['1']);
     $Room2 = isset($_POST['2']);
@@ -58,11 +58,11 @@
 
         //Creds are correct, continue with script:
         move_uploaded_file($_FILES['AudioFile']['tmp_name'], $newFilename);
-        $sql = 'INSERT INTO Messages (TmeStamp, Message, Rain, MsgName, Room1, Room2, Room3. Room4, Room5) VALUES ("' . $MessageTimee . '","' . $SendMessage . '","' . $Rain . '","' . $newFilename . '","' . $Room1 . '","' . $Room2 . '","' . $Room3 . '","' . $Room4 . '","' . $Room5 . '")';
+        $sql = 'INSERT INTO Messages (TmeStamp, Message, Rain, MsgName, Room1, Room2, Room3, Room4, Room5) VALUES ("' . $MessageTimee . '","' . $SendMessage . '","' . $Rain . '","' . $newFilename . '","' . $Room1 . '","' . $Room2 . '","' . $Room3 . '","' . $Room4 . '","' . $Room5 . '")';
         if ($conn->query($sql) === TRUE) {
             // Record Inserted Correctly, Do nothing
         } else {
-            "Error: " . $sql . "<br>" . $conn_>error;
+            "Please contact your Admin, Error: " . $sql . "<br>" . $conn_>error;
         }
     }
     //Close connection to mysql server
@@ -350,8 +350,7 @@
             <h1>Incorrect Username or Password</h1><br>';
         <?php } else { ?>
             <h1><?php echo "Welcome " . $Username?></h1><br>
-            <h1><?php echo "Lockdown has been: " . $LockdownStatus?></h1><br>
-            <h1><?php echo "Test status: " . $TestStatus?><br><br><br>
+            <h1><?php echo "Message Successfully Submitted, it will play at: " . $MessageTimee?></h1><br>
             <a href="index.html" class="button">Go Home</a>
             <!--<h2>Here you can send messages to any class you like, overwrite rain indicators, inicate a schoolwide lockdown and more(Comming Soon)</h2>-->
             </h1>';
