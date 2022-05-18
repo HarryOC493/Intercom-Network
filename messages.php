@@ -44,7 +44,7 @@
     $target_dir = 'Messages/';
     $UploadOk = False;
     $CurTime = date("YmdHis");
-    $newFilename = '/var/www/html/Messages/' . $CurTIme . '.mp3';
+    $newFilename = '/var/www/html/Messages/' . $CurTime . '.mp3';
     move_uploaded_file($_FILES['AudioFile']['tmp_name'], $newFilename);
 
     
@@ -74,7 +74,7 @@
 
         } else {
             $UploadOk = False;
-            die('File Upload error, contact your admin');
+            die('File Upload error, contact your admin' . $newFilename);
         }
         //Close connection to mysql server
         $conn->close();
