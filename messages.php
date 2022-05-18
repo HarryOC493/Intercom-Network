@@ -57,28 +57,17 @@
         if ($conn->connect_error) { die("Please contact your Admin: Connection failed: " . $conn->connect_error); }
 
         //Creds are correct, continue with script:
-        if (move_uploaded_file($_FILES['AudioFile']['tmp_name'], $newFilename)) {
-            //File Uploaded Correctly, Insert Sql Record
-            $UploadOk = True;
-
-            
-            if ($UploadOk == True) {
-                $sql = 'INSERT INTO Messages (TmeStamp, Message, Rain, MsgName, Room1, Room2, Room3. Room4, Room5) VALUES ("' . $MessageTimee . '","' . $SendMessage . '","' . $Rain . '","' . $newFilename . '","' . $Room1 . '","' . $Room2 . '","' . $Room3 . '","' . $Room4 . '","' . $Room5 . '")';
-                if ($conn->query($sql) === TRUE) {
-                    // Record Inserted Correctly, Do nothing
-                } else  {
-                    "Error: " . $sql . "<br>" . $conn_>error;
-                }
-            }
-
-
+        move_uploaded_file($_FILES['AudioFile']['tmp_name'], $newFilename);
+        $sql = 'INSERT INTO Messages (TmeStamp, Message, Rain, MsgName, Room1, Room2, Room3. Room4, Room5) VALUES ("' . $MessageTimee . '","' . $SendMessage . '","' . $Rain . '","' . $newFilename . '","' . $Room1 . '","' . $Room2 . '","' . $Room3 . '","' . $Room4 . '","' . $Room5 . '")';
+        if ($conn->query($sql) === TRUE) {
+            // Record Inserted Correctly, Do nothing
         } else {
-            $UploadOk = False;
-            die('File Upload error, contact your admin' . $newFilename);
+            "Error: " . $sql . "<br>" . $conn_>error;
         }
-        //Close connection to mysql server
-        $conn->close();
     }
+    //Close connection to mysql server
+    $conn->close();
+    
 
 
 ?>
