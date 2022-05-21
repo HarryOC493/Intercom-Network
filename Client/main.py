@@ -2,7 +2,7 @@ from http import server
 import time
 import mysql.connector
 
-mydb = mysql.connector.connect(user='root', password='dev22', server='some-mysql', database='CETSS')
+mydb = mysql.connector.connect(user='root', password='dev22', host='some-mysql', database='CETSS')
 
 mycursor = mydb.cursor()
 
