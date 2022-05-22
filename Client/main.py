@@ -7,10 +7,6 @@ mydb = mysql.connector.connect(user='root', password='dev22', host='some-mysql',
 mycursor = mydb.cursor()
 
 
-for x in myresult:
-  print(x)
-
-
 def poll():
     mycursor.execute("SELECT * FROM LockdownS")
     myresult = mycursor.fetchall()
