@@ -13,7 +13,15 @@ def poll():
     if myresult == None:
         print('No Lockdown in progresss')
     else:
+<<<<<<< HEAD
         print('Lockdown Found') 
+=======
+        print('Lockdown Found')
+        for x in myresult:
+            print(x)
+
+  
+>>>>>>> 3b20475 (Fixing indentation error)
 
 
 schedule.every(15).seconds.do(poll)
