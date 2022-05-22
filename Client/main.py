@@ -14,6 +14,9 @@ def poll():
         print('No Lockdown in progresss')
     else:
         print('Lockdown Found')
+        for x in myresult:
+        print(x)
+
   
 
 
