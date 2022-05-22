@@ -20,7 +20,7 @@ def poll():
             if x[2] == bytearray(b'1'):
                 print('This is a test')
             else:
-                playsound('lockdown.mp3a')
+                playsound('lockdown.mp3')
     else:
         #No Lockdown found. Contine
         print('Placeholder') 
