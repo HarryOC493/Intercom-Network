@@ -8,7 +8,7 @@ mycursor = mydb.cursor()
 
 
 def poll():
-    mycursor.execute("SELECT * FROM LockdownS")
+    mycursor.execute("SELECT * FROM Lockdowns")
     myresult = mycursor.fetchall()
     if myresult == 0:
         print('No Lockdown in progresss')
