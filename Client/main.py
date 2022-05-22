@@ -9,19 +9,20 @@ mycursor = mydb.cursor()
 
 def poll():
     myresult = mycursor.execute("SELECT * FROM Lockdowns")
-    print('Result: ' + str(myresult))
-    if myresult == None:
-        print('No Lockdown in progresss')
-    else:
-<<<<<<< HEAD
-        print('Lockdown Found') 
-=======
-        print('Lockdown Found')
+
+    if myresult != None:
+        #Lockdown Found
+        LockdownRows mycursor.fetchall() 
         for x in myresult:
-            print(x)
+            if LockdownRows[2] == '0x31':
+                print('This is a test')
+            else:
+                print('This is not a test')
+    else:
+        #No Lockdown found. Contine
+
 
   
->>>>>>> 3b20475 (Fixing indentation error)
 
 
 schedule.every(15).seconds.do(poll)
