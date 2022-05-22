@@ -8,16 +8,12 @@ mycursor = mydb.cursor()
 
 
 def poll():
-    mycursor.execute("SELECT * FROM Lockdowns")
-    myresult = mycursor.fetchall()
-    if myresult == 0:
+    myresult = mycursor.execute("SELECT * FROM Lockdowns")
+    print('Result: ' + str(myresult))
+    if myresult == None:
         print('No Lockdown in progresss')
     else:
-        print('Lockdown Found')
-        for x in myresult:
-        print(x)
-
-  
+        print('Lockdown Found') 
 
 
 schedule.every(15).seconds.do(poll)
