@@ -9,7 +9,7 @@ from datetime import datetime
 from os.path import exists
 
 #Uncomment in production, caused issues in Docker
-lockdownplayer = vlc.MediaPLyaer('Lockdown.mp3')
+lockdownplayer = vlc.MediaPlayer('Lockdown.mp3')
 
 ThisRoom = 'Room1' #Enter Room Name Here, See user manual for more info
 
