@@ -36,11 +36,10 @@ def poll():
         #Lockdown Found
         LockdownRows = mycursor.fetchall() 
         for x in LockdownRows:
-            #if x[1] == btyearray(b'1):
             if x[1] == '0x31':
+                print('Lockdown Active, checking if test?')
                 #Active Lockdown Found
-                #if x[2] == bytearray(b'1'):
-                if x[2] == '0x31':    
+                if x[2] == '0x31':
                     #Do Lockdown Test Things
                     print('This is a test')
                 else:
@@ -50,6 +49,7 @@ def poll():
                     lockdownplayer.play()
                     print('Lockdown found, played sound')
             else:
+                print('No active lockdown')
                 #No Lockdown Active, Contine
                 now = datetime.now()
                 Hour = now.strftime("%Y%m%d%H")
@@ -123,38 +123,7 @@ def poll():
                             pass
     else:
         #No Lockdown found. Contine
-        now = datetime.now()
-        Hour = now.strftime("%Y%m%d%H")
-        mycursor1 = mydb1.cursor(buffered=True)
-
-        fields = ['Tmestamp', 'Message', 'Rain', 'MsgName', ThisRoom]
-        values = ', '.join(fields)
-        statement = 'SELECT '+values+" FROM Messages WHERE Tmestamp LIKE '%"+Hour+"%'"
-
-        MessageFinder = mycursor1.execute(statement)
-        MessageCount = mycursor1.rowcount
-
-        if MessageCount != 0:
-            #At least one message has been found
-            MessageRows = mycursor1.fetchall()
-            for row in MessageRows:
-                if row[4] != '':
-                    #If message applies to this room:
-
-                    #Check if file has been downloaded
-                    FileName = row[3]
-                    isFile = exists(FileName)
-                    if isFile == False:
-                        #File not found, Download
-                        FileAddress = 'https://cetsstunnel-harryocon.pitunnel.com/'+FileName
-                        urllib.request.urlretrieve(FileAddress, FileName)
-                    else:
-                        #File has been downloaded already
-                        pass
-                else:
-                    pass
-        else:
-            pass
+        pass
 
         now = datetime.now()
         Minute = now.strftime("%Y%m%d%H%M")
