@@ -45,6 +45,7 @@ def poll():
                 #Uncomment in production, caused issues in Docker
                 pygame.mixer.music.load("lockdown.mp3")
                 pygame.mixer.music.play()
+                print('Lockdown found, played sound')
     else:
         #No Lockdown found. Contine
         now = datetime.now()
@@ -107,6 +108,7 @@ def poll():
                         #Uncomment The following in production, causing issue in docker testing
                         pygame.mixer.music.load(AudioFile)
                         pygame.mixer.music.play()
+                        print('Lockdown Found, Played sound')
                     if row[2] == '1':
                         #Check if rain indicator is enables
                         print('overwrite rain')
