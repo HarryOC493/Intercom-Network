@@ -1,15 +1,15 @@
 import time
 import schedule
 import mysql.connector
-import pygame
 import urllib.request
+import vlc
 
 
 from datetime import datetime
 from os.path import exists
 
 #Uncomment in production, caused issues in Docker
-pygame.mixer.init()
+lockdownplayer = vlc.MediaPLyaer('Lockdown.mp3')
 
 ThisRoom = 'Room1' #Enter Room Name Here, See user manual for more info
 
@@ -43,8 +43,7 @@ def poll():
                 #Do Lockdown Things
 
                 #Uncomment in production, caused issues in Docker
-                pygame.mixer.music.load("lockdown.mp3")
-                pygame.mixer.music.play()
+                lockdownplayer.play()
                 print('Lockdown found, played sound')
     else:
         #No Lockdown found. Contine
@@ -106,8 +105,8 @@ def poll():
                         #Get message name and play
                         AudioFile = row[3]
                         #Uncomment The following in production, causing issue in docker testing
-                        pygame.mixer.music.load(AudioFile)
-                        pygame.mixer.music.play()
+                        MsgFile = vlc.MediaPlayer(AudioFile)
+                        MsgFile.play()
                         print('Lockdown Found, Played sound')
                     if row[2] == '1':
                         #Check if rain indicator is enables
