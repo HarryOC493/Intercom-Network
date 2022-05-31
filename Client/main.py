@@ -9,7 +9,6 @@ from datetime import datetime
 from os.path import exists
 
 #Uncomment in production, caused issues in Docker
-lockdownplayer = vlc.MediaPlayer('lockdown.mp3')
 
 ThisRoom = 'Room1' #Enter Room Name Here, See user manual for more info
 
@@ -47,6 +46,7 @@ def poll():
 
                     #Uncomment in production, caused issues in Docker
                     for x in range(1):
+                        lockdownplayer = vlc.MediaPlayer('lockdown.mp3')
                         lockdownplayer.play()
                         print('Lockdown found, played sound')
             else:
