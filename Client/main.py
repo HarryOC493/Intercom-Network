@@ -36,9 +36,11 @@ def poll():
         #Lockdown Found
         LockdownRows = mycursor.fetchall() 
         for x in LockdownRows:
-            if x[1] == btyearray(b'1):
+            #if x[1] == btyearray(b'1):
+            if x[1] == '0x31':
                 #Active Lockdown Found
-                if x[2] == bytearray(b'1'):
+                #if x[2] == bytearray(b'1'):
+                if x[2] == '0x31':    
                     #Do Lockdown Test Things
                     print('This is a test')
                 else:
