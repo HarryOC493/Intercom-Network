@@ -9,7 +9,7 @@ from datetime import datetime
 from os.path import exists
 
 #Uncomment in production, caused issues in Docker
-#pygame.mixer.init()
+pygame.mixer.init()
 
 ThisRoom = 'Room1' #Enter Room Name Here, See user manual for more info
 
@@ -43,9 +43,9 @@ def poll():
                 #Do Lockdown Things
 
                 #Uncomment in production, caused issues in Docker
-                #pygame.mixer.music.load("lockdown.mp3")
-                #pygame.mixer.music.play()
-                #pygame.mixer.music.unload()
+                pygame.mixer.music.load("lockdown.mp3")
+                pygame.mixer.music.play()
+                pygame.mixer.music.unload()
     else:
         #No Lockdown found. Contine
         now = datetime.now()
@@ -106,9 +106,9 @@ def poll():
                         #Get message name and play
                         AudioFile = row[3]
                         #Uncomment The following in production, causing issue in docker testing
-                        #pygame.mixer.music.load(AudioFile)
-                        #pygame.mixer.music.play()
-                        #pygame.mixer.music.unload()
+                        pygame.mixer.music.load(AudioFile)
+                        pygame.mixer.music.play()
+                        pygame.mixer.music.unload()
                     if row[2] == '1':
                         #Check if rain indicator is enables
                         print('overwrite rain')
