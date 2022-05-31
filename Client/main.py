@@ -91,7 +91,6 @@ def poll():
                                 #File not found, Download
                                 print('File not found, downloading')
                                 FileAddress = 'https://webtunnel-harryocon.pitunnel.com'+FileName
-                                print(FileAddress)
                                 urllib.request.urlretrieve(FileAddress, FileName)
                             else:
                                 #File has been downloaded already
