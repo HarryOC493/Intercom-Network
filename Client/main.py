@@ -36,18 +36,19 @@ def poll():
         #Lockdown Found
         LockdownRows = mycursor.fetchall() 
         for x in LockdownRows:
-            if x[1] == "bytearray(b'1')":
+            if x[1] == bytearray(b'1'):
                 print('Lockdown Active, checking if test?')
                 #Active Lockdown Found
-                if x[2] == '0x31':
+                if x[2] == bytearray(b'1'):
                     #Do Lockdown Test Things
                     print('This is a test')
                 else:
                     #Do Lockdown Things
 
                     #Uncomment in production, caused issues in Docker
-                    lockdownplayer.play()
-                    print('Lockdown found, played sound')
+                    for x in range(1):
+                        lockdownplayer.play()
+                        print('Lockdown found, played sound')
             else:
                 print('No active lockdown')
                 #No Lockdown Active, Contine
@@ -176,4 +177,7 @@ schedule.every(15).seconds.do(poll)
 
 while True:
     schedule.run_pending()
+    mydb.commit()
+    mydb1.commit()
+    mydb2.commit()
     time.sleep(1)
