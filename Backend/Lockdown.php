@@ -37,7 +37,7 @@
             $LockdownStatus = 'Stopped';
         }
 
-        $sql = "UPDATE Lockdowns SET Tmestamp = 'na', Lockdown = " . $Lockdown . ", Test = " . $isTest . " LIMIT 1";
+        $sql = "UPDATE Lockdowns SET Tmestamp = 'na', Lockdown = " . $Lockdown . ", Test = " . $isTest . " WHERE TmeStamp = 'na' LIMIT 1";
 
         if ($conn->query($sql) === TRUE) {
             //Do nothing if query runs fine
