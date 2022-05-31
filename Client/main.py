@@ -36,7 +36,7 @@ def poll():
         #Lockdown Found
         LockdownRows = mycursor.fetchall() 
         for x in LockdownRows:
-            if x[1] == '0x31':
+            if x[1] == "bytearray(b'1')":
                 print('Lockdown Active, checking if test?')
                 #Active Lockdown Found
                 if x[2] == '0x31':
