@@ -13,9 +13,18 @@ from os.path import exists
 
 ThisRoom = 'Room1' #Enter Room Name Here, See user manual for more info
 
-mydb = mysql.connector.connect(user='root', password='dev22', host='some-mysql', database='CETSS')
-mydb1 = mysql.connector.connect(user='root', password='dev22', host='some-mysql', database='CETSS')
-mydb2 = mysql.connector.connect(user='root', password='dev22', host='some-mysql', database='CETSS')
+File = open('creds.txt', 'r')
+Filelines = File.readlines()
+
+
+DbUser = Filelines[0].strip()
+DbPass = Filelines[1].strip()
+DbHost = Filelines[2].strip()
+DbName = Filelines[3].strip()
+
+mydb = mysql.connector.connect(user=DbUser, password=DbPass, host=DbHost, database=DbName)
+mydb1 = mysql.connector.connect(user=DbUser, password=DbPass, host=DbHost, database=DbName)
+mydb2 = mysql.connector.connect(user=DbUser, password=DbPass, host=DbHost, database=DbName)
 
 mycursor = mydb.cursor(buffered=True)
 
