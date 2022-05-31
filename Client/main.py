@@ -86,8 +86,8 @@ def poll():
                             print('Message Applies to this room')
 
                             FileName = row[3]
-                            FileName1 = FileName.replace('/' '')
-                            isFile = exists(Filename1)
+                            FileName1 = FileName.replace('/', '')
+                            isFile = exists(FileName1)
                             if isFile == False:
                                 #File not found, Download
                                 print('File not found, downloading')
@@ -138,7 +138,7 @@ def poll():
 
                                 #Get message name and play
                                 AudioFile = row[3]
-                                AudioFile1 = AudioFile.replace('/' '')
+                                AudioFile1 = AudioFile.replace('/', '')
                                 #Uncomment The following in production, causing issue in docker testing
                                 MsgFile = vlc.MediaPlayer(AudioFile1)
                                 MsgFile.play()
