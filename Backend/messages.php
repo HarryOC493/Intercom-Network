@@ -44,7 +44,8 @@
     $target_dir = 'Messages/';
     $UploadOk = False;
     $CurTime = date("YmdHis");
-    $newFilename = '/' . $CurTime . '.mp3';
+    $newFilename = '/var/www/html/' . $CurTime . '.mp3';
+    $newFilename1 = '/' . $CurTime . '.mp3';
     move_uploaded_file($_FILES['AudioFile']['tmp_name'], $newFilename);
 
     
@@ -58,7 +59,7 @@
         //Creds are correct, continue with script:
         move_uploaded_file($_FILES['AudioFile']['tmp_name'], $newFilename);
         $TimeInterval = date("Ymd") . $MessageTimee;
-        $sql = 'INSERT INTO Messages (TmeStamp, Message, Rain, MsgName, Room1, Room2, Room3, Room4, Room5) VALUES ("' . $TimeInterval . '","' . $SendMessage . '","' . $Rain . '","' . $newFilename . '","' . $Room1 . '","' . $Room2 . '","' . $Room3 . '","' . $Room4 . '","' . $Room5 . '")';
+        $sql = 'INSERT INTO Messages (TmeStamp, Message, Rain, MsgName, Room1, Room2, Room3, Room4, Room5) VALUES ("' . $TimeInterval . '","' . $SendMessage . '","' . $Rain . '","' . $newFilename1 . '","' . $Room1 . '","' . $Room2 . '","' . $Room3 . '","' . $Room4 . '","' . $Room5 . '")';
         if ($conn->query($sql) === TRUE) {
             // Record Inserted Correctly, Do nothing
         } else {
