@@ -86,12 +86,13 @@ def poll():
                             print('Message Applies to this room')
 
                             FileName = row[3]
-                            isFile = exists(FileName)
+                            FileName1 = FileName.replace('/' '')
+                            isFile = exists(Filename1)
                             if isFile == False:
                                 #File not found, Download
                                 print('File not found, downloading')
                                 FileAddress = 'https://webtunnel-harryocon.pitunnel.com'+FileName
-                                urllib.request.urlretrieve(FileAddress, FileName)
+                                urllib.request.urlretrieve(FileAddress, FileName1)
                             else:
                                 #File has been downloaded already
                                 print('File previously downloaded, passing')
@@ -137,8 +138,9 @@ def poll():
 
                                 #Get message name and play
                                 AudioFile = row[3]
+                                AudioFile1 = AudioFile.replace('/' '')
                                 #Uncomment The following in production, causing issue in docker testing
-                                MsgFile = vlc.MediaPlayer(AudioFile)
+                                MsgFile = vlc.MediaPlayer(AudioFile1)
                                 MsgFile.play()
                                 print('Lockdown Found, Played sound')
                             if row[2] == bytearray(b'1'):
