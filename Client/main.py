@@ -9,7 +9,7 @@ from datetime import datetime
 from os.path import exists
 
 ThisRoom = 'Room1' #Enter Room Name Here, See user manual for more info
-File = open('../../creds.txt', 'r')
+File = open('./creds.txt', 'r')
 Filelines = File.readlines()
 
 
