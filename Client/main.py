@@ -165,7 +165,7 @@ def pollPlay():
 
 
 schedule.every(15).seconds.do(poll)
-schedule.every(60).seconds.do(poll)
+schedule.every(60).seconds.do(pollPlay)
 
 while True:
     schedule.run_pending()
