@@ -110,7 +110,7 @@ def poll():
                 #--------------- Downloading function complete ----------------------------------------------
 
                 #----------------- Beginning To check is messsage needs to be played now ---------------
-def pollPlay();
+def pollPlay():
     now = datetime.now()
     Minute = now.strftime("%Y%m%d%H%M")
     mycursor2 = mydb2.cursor(buffered=True)
