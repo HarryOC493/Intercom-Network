@@ -110,49 +110,50 @@ def poll():
                 #--------------- Downloading function complete ----------------------------------------------
 
                 #----------------- Beginning To check is messsage needs to be played now ---------------
-                now = datetime.now()
-                Minute = now.strftime("%Y%m%d%H%M")
-                mycursor2 = mydb2.cursor(buffered=True)
+def pollPlay();
+    now = datetime.now()
+    Minute = now.strftime("%Y%m%d%H%M")
+    mycursor2 = mydb2.cursor(buffered=True)
 
-                fields = ['Tmestamp', 'Message', 'Rain', 'MsgName', ThisRoom]
-                values = ', '.join(fields)
-                statement1 = 'SELECT '+values+" FROM Messages WHERE Tmestamp LIKE '%"+Minute+"%'"
+    fields = ['Tmestamp', 'Message', 'Rain', 'MsgName', ThisRoom]
+    values = ', '.join(fields)
+    statement1 = 'SELECT '+values+" FROM Messages WHERE Tmestamp LIKE '%"+Minute+"%'"
 
-                MessageTime = mycursor2.execute(statement1)
-                IsMessage = mycursor2.rowcount
+    MessageTime = mycursor2.execute(statement1)
+    IsMessage = mycursor2.rowcount
 
-                if IsMessage != 0:
-                    #At least one message has been found
-                    print('--------------------------------------------------')
-                    print('At least one message has been found (From play messages function')
-                    NowMessages = mycursor2.fetchall()
+    if IsMessage != 0:
+        #At least one message has been found
+        print('--------------------------------------------------')
+        print('At least one message has been found (From play messages function')
+        NowMessages = mycursor2.fetchall()
 
-                    for row in NowMessages:
-                        if row[4] == bytearray(b'1'):
-                            print('Message applies to this room')
-                            #Message applies to this room:
+        for row in NowMessages:
+            if row[4] == bytearray(b'1'):
+                print('Message applies to this room')
+                #Message applies to this room:
 
-                            if row[1] == bytearray(b'1'):
-                                print('Send message tickbox checked')
-                                #Check if sending a message
+                if row[1] == bytearray(b'1'):
+                    print('Send message tickbox checked')
+                    #Check if sending a message
 
-                                #Get message name and play
-                                AudioFile = row[3]
-                                AudioFile1 = AudioFile.replace('/', '')
-                                #Uncomment The following in production, causing issue in docker testing
-                                MsgFile = vlc.MediaPlayer(AudioFile1)
-                                MsgFile.play()
-                                print('Lockdown Found, Played sound')
-                            if row[2] == bytearray(b'1'):
-                                #Check if rain indicator is enables
-                                print('overwrite rain')
-                                #Light Led
+                    #Get message name and play
+                    AudioFile = row[3]
+                    AudioFile1 = AudioFile.replace('/', '')
+                    #Uncomment The following in production, causing issue in docker testing
+                    MsgFile = vlc.MediaPlayer(AudioFile1)
+                    MsgFile.play()
+                    print('Lockdown Found, Played sound')
+                if row[2] == bytearray(b'1'):
+                    #Check if rain indicator is enables
+                    print('overwrite rain')
+                    #Light Led
 
 
-                        else:
-                            #Message does not apply to this room
-                            print('Message does not apply to this room (From Play message function')
-                            pass
+            else:
+                #Message does not apply to this room
+                print('Message does not apply to this room (From Play message function')
+                pass
 
 
 
@@ -164,6 +165,7 @@ def poll():
 
 
 schedule.every(15).seconds.do(poll)
+schedule.every(60).seconds.do(poll)
 
 while True:
     schedule.run_pending()
